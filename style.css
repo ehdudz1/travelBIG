@@ -1,0 +1,100 @@
+.logo{
+  margin-top: -5px;
+  padding-left: 30px;
+  float: left;
+}
+.row {
+  padding-top: 30px;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+.container{
+  padding-top: 50px;
+}
+.jumbotron{
+  margin-bottom: 0px;
+  background-color: black;
+}
+
+.navbar{
+  border-radius: 0px;
+}
+.navbar-nav li{
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.navbar-inverse .navbar-nav  li  a {
+    color: white;
+}
+.table-striped {
+    text-align: left;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.btn{
+  float: right;
+}
+
+/*회전사진 좌우측 화살표*/
+.carousel-control {
+    /*position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;*/
+    width: 30%;
+    /*font-size: 20px;
+    color: grey;
+    text-align: center;*/
+    text-shadow: 0 5px 2px rgba(0, 0, 0, 0.7);
+    /*filter: alpha(opacity=50);
+    opacity: 0.5;*/
+}
+.carousel-control.right {
+  right: 0;
+  left: auto;
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .0000) 0%, rgba(0, 0, 0, .0) 100%);
+  background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .0000) 0%, rgba(0, 0, 0, .0) 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .0001)), to(rgba(0, 0, 0, .0)));
+  background-image:         linear-gradient(to right, rgba(0, 0, 0, .0000) 0%, rgba(0, 0, 0, .0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+  background-repeat: repeat-x;
+}
+.carousel-control.left {
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .0) 0%, rgba(0, 0, 0, .0000) 100%);
+  background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .0) 0%, rgba(0, 0, 0, .0000) 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .0001)));
+  background-image:         linear-gradient(to right, rgba(0, 0, 0, .0) 0%, rgba(0, 0, 0, .0000) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+  background-repeat: repeat-x;
+}
+
+/*가운데 정렬*/
+/*게시판 목록 가운데정렬*/
+.navbar-inverse{
+  text-align: center;
+}
+.navbar-nav {
+  float: none;
+  display: inline-block;
+}
+/*내용 테이블 가운데 정렬*/
+.table-striped{
+  text-align: center;
+}
+.tb{
+  float: none;
+  /*display: inline-block;*/
+}
+/*회전사진 가운데정렬*/
+.item{
+  text-align: center;
+}
+.carousel-inner .item img{
+  display: inline-block;
+}
+/*하단 리스트번호 가운데정렬*/
+.footlist {
+  text-align: center;
+}
