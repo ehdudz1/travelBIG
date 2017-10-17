@@ -37,6 +37,18 @@
   float: right;
 }
 
+#signup {
+    padding-left: 150px;
+    padding-right: 150px;
+}
+#write{
+  padding-left: 150px;
+  padding-right: 150px;
+
+}
+#writebtn{
+  margin-bottom: 50px;
+}
 /*회전사진 좌우측 화살표*/
 .carousel-control {
     /*position: absolute;
