@@ -16,12 +16,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script>
-      var title = "";
-      var author = "";
-      var descript = "";
-
-    </script>
 
 
   </head>
@@ -33,7 +27,7 @@
 
     <nav id="top">
       <ul class="nav nav-pills pull-right">
-        <li><a href="#">회원가입</a></li>
+        <li><a href="/signup.php">회원가입</a></li>
         <li><a href="#">로그인</a></li>
         <li><a href="#">마이페이지</a></li>
       </ul>
@@ -72,22 +66,79 @@
 
 
 
-
-
       <article>
 
-    				 <form id="write" action="process.php" method="post">
+    				 <form id="write" action="/process.php?id=write" method="post">
                <br><h4>글쓰기</h4><br>
               <div class="form-group">
               <label for="form-board">게시판 선택</label>
-               <select class="form-control" name="board" id="form-board">
-                 <option value="free">자유게시판</option>
+
+              <?php
+
+              // echo '<option value="free" >자유게시판</option>';
+              // echo '<option value="free" selected>asdf</option>';
+              // echo '<option value="free" >자aadsf유게시판</option>';
+              echo '<select class="form-control" name="board" id="form-board">';
+
+                switch($_GET['id']){
+                  case 'free':
+                    echo '<option value="free" selected>자유게시판</option>';
+                    echo '<option value="dome">국내</option>';
+                    echo '<option value="over">해외</option>';
+                    echo '<option value="qna">Q&A</option>';
+                    echo '<option value="event">이벤트공지</option>';
+                    echo '<option value="market">중고나라</option>';
+                  break;
+                  case 'dome':
+                    echo '<option value="free">자유게시판</option>';
+                    echo '<option value="dome" selected>국내</option>';
+                    echo '<option value="over">해외</option>';
+                    echo '<option value="qna">Q&A</option>';
+                    echo '<option value="event">이벤트공지</option>';
+                    echo '<option value="market">중고나라</option>';
+                  break;
+                  case 'over':
+                    echo '<option value="free">자유게시판</option>';
+                    echo '<option value="dome">국내</option>';
+                    echo '<option value="over" selected>해외</option>';
+                    echo '<option value="qna">Q&A</option>';
+                    echo '<option value="event">이벤트공지</option>';
+                    echo '<option value="market">중고나라</option>';
+                  break;
+                  case 'qna':
+                    echo '<option value="free">자유게시판</option>';
+                    echo '<option value="dome">국내</option>';
+                    echo '<option value="over">해외</option>';
+                    echo '<option value="qna" selected>Q&A</option>';
+                    echo '<option value="event">이벤트공지</option>';
+                    echo '<option value="market">중고나라</option>';
+                  break;
+                  case 'event':
+                    echo '<option value="free">자유게시판</option>';
+                    echo '<option value="dome">국내</option>';
+                    echo '<option value="over">해외</option>';
+                    echo '<option value="qna">Q&A</option>';
+                    echo '<option value="event" selected>이벤트공지</option>';
+                    echo '<option value="market">중고나라</option>';
+                  break;
+                  case 'market':
+                    echo '<option value="free">자유게시판</option>';
+                    echo '<option value="dome">국내</option>';
+                    echo '<option value="over">해외</option>';
+                    echo '<option value="qna">Q&A</option>';
+                    echo '<option value="event">이벤트공지</option>';
+                    echo '<option value="market" selected>중고나라</option>';
+                  break;
+                }
+
+                 echo '</select>';
+               ?>
+                 <!-- <option value="free">자유게시판</option>
                  <option value="dome">국내</option>
                  <option value="over">해외</option>
                  <option value="qna">Q&A</option>
                  <option value="event">이벤트공지</option>
-                 <option value="market">중고나라</option>
-               </select>
+                 <option value="market">중고나라</option> -->
              </div>
 
     					 <div class="form-group">

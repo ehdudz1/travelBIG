@@ -25,7 +25,7 @@
 
     <nav id="top">
       <ul class="nav nav-pills pull-right">
-        <li><a href="#">회원가입</a></li>
+        <li><a href="/signup.php">회원가입</a></li>
         <li><a href="#">로그인</a></li>
         <li><a href="#">마이페이지</a></li>
       </ul>
@@ -59,19 +59,27 @@
     <hr>
 
     <!-- 회원가입 -->
-<form id="signup">
+<form id="signup" action="/process.php?id=signup" method="post">
   <h4>회원가입</h4>
   <div class="form-group">
-    <label for="exampleInputId">아이디</label>
-    <input type="email" class="form-control" id="exampleInputId" placeholder="아이디를 입력하세요">
+    <label for="InputId">아이디</label>
+    <input type="text" class="form-control" name="Id" id="InputId" placeholder="아이디를 입력하세요">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">암호</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="암호">
+    <label for="InputPW1">암호</label>
+    <input type="password" class="form-control" name="PW1" id="InputPW1" placeholder="암호">
   </div>
  <div class="form-group">
-   <label for="exampleInputEmail1">이메일 주소</label>
-   <input type="email" class="form-control" id="exampleInputEmail1" placeholder="이메일을 입력하세요">
+   <label for="InputEmail">이메일 주소</label>
+   <input type="email" class="form-control" name="Email" id="InputEmail" placeholder="이메일을 입력하세요">
+ </div>
+ <div class="form-group">
+   <label for="InputName">이름</label>
+   <input type="text" class="form-control" name="Name" id="InputName" placeholder="이름을 입력하세요">
+ </div>
+ <div class="form-group">
+   <label for="InputBday">생년월일</label>
+   <input type="number" class="form-control" name="Bday" id="InputBday" placeholder="생년월일을 입력하세요">
  </div>
 
  <button type="submit" class="btn btn-default">회원가입</button>

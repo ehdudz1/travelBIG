@@ -109,7 +109,7 @@
     $a = $_GET['id'];
     $sql = "SELECT * FROM "."$a";
     $result  = mysqli_query($conn,$sql);
-
+    echo $_GET['id']." 게시판";
   echo '<div class="row">';
   echo '<div class="col-md-3"></div>';
   echo '<table class="table table-striped col-md-6">';
@@ -129,7 +129,7 @@
   }
 
   echo '</table>';
-  echo '<a class="btn btn-default" href="/write.php">글쓰기</a>';
+  echo '<a class="btn btn-default" href="/write.php?id='.$_GET['id'].'">글쓰기</a>';
   echo '<div class="col-md-3"></div>';
   echo '</div>';
 }
