@@ -26,7 +26,7 @@
     <nav id="top">
       <ul class="nav nav-pills pull-right">
         <li><a href="/signup.php">회원가입</a></li>
-        <li><a href="/login.php">로그인</a></li>
+        <li><a href="#">로그인</a></li>
         <li><a href="#">마이페이지</a></li>
       </ul>
     </nav>
@@ -105,59 +105,60 @@
 <!-- 본문 -->
   <article>
   <?php
-  if(empty($_GET['id']) === false){
-    $a = $_GET['id'];
-    $sql = "SELECT * FROM ".$a." ORDER BY id DESC";
-    $result  = mysqli_query($conn,$sql);
+ echo $_GET['id']."게시판입니다.";
+ echo "<br>";
+ echo $_GET['number']."번 게시물";
+ echo "<br>";
+ $id = $_GET['id'];
+ $number = $_GET['number'];
+ $sql = "SELECT * FROM ".$id." WHERE id = ".$number;
+ $result  = mysqli_query($conn,$sql);
 
-    echo "<h4>".$_GET['id']." 게시판</h4>";
-  echo '<div class="row">';
-  echo '<div class="col-md-3"></div>';
-  echo '<table class="table table-striped col-md-6">';
-  echo "<tbody>";
-  echo "<th>글번호</th><th>제목</th><th>내용</th><th>작성자</th><th>작성시간</th>";
-  echo "</tbody>";
-  while ($row = mysqli_fetch_assoc($result)) {
-    echo "<tbody>";
-    echo "<tr class='tb'>";
-    echo '<th>'.$row['id'].'</th>';
-    echo '<th>'.'<a href="/descript.php?id='.$_GET['id'].'&number='.$row['id'].'">'.$row['title'].'</a>'.'</th>';
-    echo '<th>'.$row['descript'].'</th>';
-    echo '<th>'.$row['author'].'</th>';
-    echo '<th>'.$row['write'].'</th>';
-    echo "</tr>";
-    echo "</tbody>";
-  }
-
-  echo '</table>';
-  echo '<a class="btn btn-default btn-sm" href="/write.php?id='.$_GET['id'].'">글쓰기</a>';
-  echo '<div class="col-md-3"></div>';
-  echo '</div>';
+ var_dump($result);
+ echo "<br>";
+ print_r($sql);
+echo "<br>";
+ while($row = mysqli_fetch_assoc($result)){
+   echo "글번호 : ".$row['id']."<br>";
+   echo "제목 : ".$row['title']."<br>";
+   echo "내용 : ".$row['descript']."<br>";
+   echo "작성자 : ".$row['author']."<br>";
+   echo "작성시간 : ".$row['write']."<br>";
 }
-  ?>
+?>
+
   </article>
   <!-- 본문끝 -->
+
+  <!-- 글삭제 -->
+  <?php
+  echo '<form id="del" action="/process.php?id=del&board='.$_GET['id'].'&number='.$_GET['number'].'" method="post">';
+  echo '<button type="submit" class="btn btn-default">글삭제</button>';
+  echo '</form>';
+
+   ?>
+
 
 
     <!-- 하단 목록바 -->
     <footer>
     <?php
-    if(empty($_GET['id']) === false){
-      echo '<div class="row">';
-      echo '<div class="col-md-3"></div>';
-      echo '<nav class="col-md-6 footlist">';
-      echo '<ul class="pagination">';
-      echo '<li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
-      echo '<li><a href="#">1</a></li>';
-      echo '<li><a href="#">2</a></li>';
-      echo '<li><a href="#">3</a></li>';
-      echo '<li><a href="#">4</a></li>';
-      echo '<li><a href="#">5</a></li>';
-      echo '<li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>';
-      echo '</nav>';
-      echo '<div class="col-md-3"></div>';
-      echo '</div>';
-    }
+    // if(empty($_GET['id']) === false){
+    //   echo '<div class="row">';
+    //   echo '<div class="col-md-3"></div>';
+    //   echo '<nav class="col-md-6 footlist">';
+    //   echo '<ul class="pagination">';
+    //   echo '<li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+    //   echo '<li><a href="#">1</a></li>';
+    //   echo '<li><a href="#">2</a></li>';
+    //   echo '<li><a href="#">3</a></li>';
+    //   echo '<li><a href="#">4</a></li>';
+    //   echo '<li><a href="#">5</a></li>';
+    //   echo '<li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>';
+    //   echo '</nav>';
+    //   echo '<div class="col-md-3"></div>';
+    //   echo '</div>';
+    // }
      ?>
     </footer>
     <!-- 하단목록바 끝 -->

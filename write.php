@@ -131,6 +131,7 @@
                   break;
                 }
 
+
                  echo '</select>';
                ?>
                  <!-- <option value="free">자유게시판</option>

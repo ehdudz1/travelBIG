@@ -12,9 +12,13 @@ switch($_GET['id']){
     case 'signup':
       $sql = "INSERT INTO ".$config["dname"]."."."user_inpo(`email`, `user_id`, `user_pw`, `name`, `bday`)"." VALUES('".$_POST['Email']."','".$_POST['Id']."','".$_POST['PW1']."','".$_POST['Name']."',".$_POST['Bday'].")";
       $result = mysqli_query($conn, $sql);
-        header("Location: http://localhost/index.php");
+        header("Location: http://localhost/signCG.php");
         break;
-
+    case 'del':
+      $sql = "DELETE FROM ".$_GET['board']." WHERE id = ".$_GET['number'];
+      $result = mysqli_query($conn, $sql);
+        header("Location: http://localhost/index.php?id=".$_GET['board']);
+        break;
 }
 //$sql = "INSERT INTO ".$config["dname"].'.'.$_POST['board']."(`id`,`title`,`descript`,`author`,`write`) VALUES("."NULL".", '".$_POST['title']."', '".$_POST['descript']."', '".$_POST['author']."', NOW())";
 //$sql = "INSERT INTO ".$config["dname"]."."."user_inpo(`email`, `user_id`, `user_pw`, `name`, `bday`)"." VALUES('".$_POST['Email']."','".$_POST['Id']."','".$_POST['PW1']."','".$_POST['Name']."',".$_POST['Bday'].")";
