@@ -1,10 +1,10 @@
 <?php
-  require("/db.php");
-  require("/config.php");
+  require("/etc/db.php");
+  require("/etc/config.php");
   $conn = db_init($config["host"],$config["duser"],$config["dpw"],$config["dname"]);
   $sql = "SELECT * FROM board";
 	$result = mysqli_query($conn,$sql);
-
+session_start();
  ?>
 
 
@@ -22,14 +22,25 @@
   <body>
 
     <p>
-      <a class="logo" href="/index.php"><img src="/img/logo.jpg" width="50" height="50"></a>
+      <a class="logo" href="/index.php"><img src="/img/logo.png" width="50" height="50"></a>
     </p>
 
+    <!-- 우측상단 네비 -->
     <nav id="top">
       <ul class="nav nav-pills pull-right">
-        <li><a href="/signup.php">회원가입</a></li>
-        <li><a href="#">로그인</a></li>
-        <li><a href="#">마이페이지</a></li>
+        <!-- <li><a href="/login.php ">로그인</a></li> -->
+        <!-- <li><a href="#">마이페이지</a></li> -->
+
+        <?php
+        if($_SESSION['user_name'] != NULL){
+
+        echo '<li><a href="#">"'.$_SESSION['user_name'].'"님</a></li>';
+        echo "<li><a href='logout.php'>로그아웃</a></li>";
+      }else {
+        echo '<li><a href="/signup.php">회원가입</a></li>';
+        echo '<li><a href="/login.php ">로그인</a></li>';
+      }
+         ?>
       </ul>
     </nav>
 
@@ -149,7 +160,10 @@
 
     					 <div class="form-group">
     						 <label for="form-author">작성자</label>
-    						 <input type="text" class="form-control" name="author" id="form-author" placeholder="작성자를 적어주세요.">
+                 <?php
+                 echo '<input type="text" class="form-control"  id="form-author" disabled value="'.$_SESSION['user_name'].'('.$_SESSION['user_id'].')'.'">';
+                 echo '<input type="hidden" name="author" value="'.$_SESSION['user_name'].'('.$_SESSION['user_id'].')'.'">';
+                  ?>
     					 </div>
 
     					 <div class="form-group">

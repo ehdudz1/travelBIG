@@ -11,9 +11,9 @@
 .container{
   padding-top: 50px;
 }
-.jumbotron{
-  margin-bottom: 0px;
-  background-color: black;
+.jumbotron {
+    margin-bottom: 0px;
+    background-color: #91D8EF;
 }
 
 .navbar{

@@ -1,10 +1,10 @@
 <?php
-  require("/db.php");
-  require("/config.php");
+  require("/etc/db.php");
+  require("/etc/config.php");
   $conn = db_init($config["host"],$config["duser"],$config["dpw"],$config["dname"]);
   $sql = "SELECT * FROM board";
 	$result = mysqli_query($conn,$sql);
-
+session_start();
  ?>
 
 <!DOCTYPE html>
@@ -20,14 +20,25 @@
   <body>
     <!-- 상단  -->
     <p>
-      <a class="logo" href="/index.php"><img src="/img/logo.jpg" width="50" height="50"></a>
+      <a class="logo" href="/index.php"><img src="/img/logo.png" width="50" height="50"></a>
     </p>
 
+    <!-- 우측상단 네비 -->
     <nav id="top">
       <ul class="nav nav-pills pull-right">
-        <li><a href="/signup.php">회원가입</a></li>
-        <li><a href="#">로그인</a></li>
-        <li><a href="#">마이페이지</a></li>
+        <!-- <li><a href="/login.php ">로그인</a></li> -->
+        <!-- <li><a href="#">마이페이지</a></li> -->
+
+        <?php
+        if($_SESSION['user_name'] != NULL){
+
+        echo '<li><a href="#">"'.$_SESSION['user_name'].'"님</a></li>';
+        echo "<li><a href='logout.php'>로그아웃</a></li>";
+      }else {
+        echo '<li><a href="/signup.php">회원가입</a></li>';
+        echo '<li><a href="/login.php ">로그인</a></li>';
+      }
+         ?>
       </ul>
     </nav>
 
@@ -59,8 +70,32 @@
     <hr>
 
     <!-- 회원가입 -->
+    <?php
 
-  <h4>""님 회원가입을 축하합니다.!!!</h4>
+    // if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
+    // 	echo "<meta http-equiv='refresh' content='0;url=/login.php'>";
+    // 	exit;
+    // }
+    // $user_id = $_SESSION['user_id'];
+    // $user_name = $_SESSION['user_name'];
+    // echo "<p>안녕하세요. $user_name($user_id)님</p>";
+
+    if($_SESSION['user_name'] != NULL){
+
+      $user_id = $_SESSION['user_id'];
+      $user_name = $_SESSION['user_name'];
+      echo "<p>안녕하세요. $user_name($user_id)님</p>";
+  }
+    if($_SESSION['user'] != NULL){
+
+    $user = $_SESSION['user'];
+    //$user_name = $_SESSION['user']['user_name'];
+    echo "<p>가입을축하합니다. $user님</p>";
+  }
+  //session_destroy();
+    ?>
+
+
 
 
 

@@ -1,10 +1,11 @@
 <?php
-  require("/db.php");
-  require("/config.php");
+  require("/etc/db.php");
+  require("/etc/config.php");
   $conn = db_init($config["host"],$config["duser"],$config["dpw"],$config["dname"]);
   $sql = "SELECT * FROM board";
 	$result = mysqli_query($conn,$sql);
 
+session_start();
  ?>
 
 <!DOCTYPE html>
@@ -20,14 +21,25 @@
   <body>
     <!-- 상단  -->
     <p>
-      <a class="logo" href="/index.php"><img src="/img/logo.jpg" width="50" height="50"></a>
+      <a class="logo" href="/index.php"><img src="/img/logo.png" width="50" height="50"></a>
     </p>
 
+    <!-- 우측상단 네비 -->
     <nav id="top">
       <ul class="nav nav-pills pull-right">
-        <li><a href="/signup.php">회원가입</a></li>
-        <li><a href="/login.php">로그인</a></li>
-        <li><a href="#">마이페이지</a></li>
+        <!-- <li><a href="/login.php ">로그인</a></li> -->
+        <!-- <li><a href="#">마이페이지</a></li> -->
+
+        <?php
+        if($_SESSION['user_name'] != NULL){
+
+        echo '<li><a href="#">"'.$_SESSION['user_name'].'"님</a></li>';
+        echo "<li><a href='logout.php'>로그아웃</a></li>";
+      }else {
+        echo '<li><a href="/signup.php">회원가입</a></li>';
+        echo '<li><a href="/login.php ">로그인</a></li>';
+      }
+         ?>
       </ul>
     </nav>
 
@@ -73,21 +85,18 @@
       echo '</ol>';
 
       echo '<div class="carousel-inner" role="listbox">';
+
       echo '<div class="item active">';
-      echo '<img src="/img/3.jpg" alt="Chania">';
+      echo '<img src="/img/3.png" alt="Chania">';
       echo '</div>';
       echo '<div class="item">';
-      echo '<img src="/img/4.jpg" alt="Chania">';
+      echo '<img src="/img/4.png" alt="Chania">';
       echo '</div>';
       echo '<div class="item">';
-      echo '<img src="/img/5.jpg" alt="Flower">';
+      echo '<img src="/img/5.png" alt="Flower">';
       echo '</div>';
-      echo '<div class="item">';
-      echo '<img src="/img/6.jpg" alt="Flower">';
+
       echo '</div>';
-      echo '<div class="item">';
-      echo '<img src="/img/7.jpg" alt="Flower">';
-      echo '</div></div>';
 
       echo '<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">';
       echo '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>';
